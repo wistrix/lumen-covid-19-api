@@ -71,6 +71,10 @@ $app->configure('app');
 |
 */
 
+$app->middleware([
+    App\Http\Middleware\JsonMiddleware::class
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers

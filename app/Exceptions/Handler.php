@@ -52,11 +52,10 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if($exception instanceof ModelNotFoundException && env('APP_DEBUG') === false){
-            return response([
-                'code' => 'not_found',
-                'message' => 'The requested endpoint does not exist.'
-            ], 404);
+        if($request->wantsJson()) {
+            if ($exception instanceof NotFoundHttpException || $exception instanceof ModelNotFoundException) {
+                $exception = new NotFoundHttpException('The requested endpoint does not exist.');
+            }
         }
 
         return parent::render($request, $exception);
