@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TimeSeriesCollection;
 use App\TimeSeries;
-use App\Http\Resources\TimeSeries as TimeSeriesResource;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Cache;
 
@@ -17,7 +17,7 @@ class TimeSeriesController extends Controller
         return Cache::rememberForever('timeSeries', function() {
             $timeSeries = TimeSeries::ordered()->cursor();
 
-            return (TimeSeriesResource::collection($timeSeries))->toArray(null);
+            return (TimeSeriesCollection::make($timeSeries))->toArray(null);
         });
     }
 
@@ -34,7 +34,7 @@ class TimeSeriesController extends Controller
                     ->limit(1);
             })->cursor();
 
-            return (TimeSeriesResource::collection($timeSeries))->toArray(null);
+            return (TimeSeriesCollection::make($timeSeries))->toArray(null);
         });
     }
 }

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Country;
 use App\Http\Resources\Country as CountryResource;
+use App\Http\Resources\CountryCollection;
 use App\Http\Resources\TimeSeries as TimeSeriesResource;
+use App\Http\Resources\TimeSeriesCollection;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Cache;
 
@@ -18,7 +20,7 @@ class CountryController extends Controller
         return Cache::rememberForever('countries', function(){
             $countries = Country::ordered()->cursor();
 
-            return (CountryResource::collection($countries))->toArray(null);
+            return (CountryCollection::make($countries))->toArray(null);
         });
     }
 
@@ -45,7 +47,7 @@ class CountryController extends Controller
                 ->ordered()
                 ->cursor();
 
-            return (TimeSeriesResource::collection($timeSeries))->toArray(null);
+            return (TimeSeriesCollection::make($timeSeries))->toArray(null);
         });
     }
 
