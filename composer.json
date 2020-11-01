@@ -6,12 +6,13 @@
     "type": "project",
     "require": {
         "php": "^7.2.5",
+        "ext-json": "*",
         "laravel/lumen-framework": "^7.0",
         "league/flysystem": "^1.0",
-        "maatwebsite/excel": "^3.1",
-        "ext-json": "*"
+        "maatwebsite/excel": "^3.1"
     },
     "require-dev": {
+        "flipbox/lumen-generator": "^8.0",
         "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.3.1",
         "phpunit/phpunit": "^8.5"
