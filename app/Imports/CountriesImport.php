@@ -26,8 +26,8 @@ class CountriesImport implements ToCollection
             ], [
                 'name' => $country[7],
                 'code' => $country[2],
-                'latitude' => $country[8],
-                'longitude' => $country[9],
+                'latitude' => $country[8] ?? 0,
+                'longitude' => $country[9] ?? 0,
             ]);
         });
     }
