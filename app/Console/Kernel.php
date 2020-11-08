@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\CountriesImportCommand;
+use App\Console\Commands\ServeCommand;
 use App\Console\Commands\TimeSeriesFetchCommand;
 use App\Console\Commands\TimeSeriesImportCommand;
 use Illuminate\Console\Scheduling\Schedule;
@@ -19,6 +20,7 @@ class Kernel extends ConsoleKernel
         TimeSeriesFetchCommand::class,
         CountriesImportCommand::class,
         TimeSeriesImportCommand::class,
+        ServeCommand::class,
     ];
 
     /**
